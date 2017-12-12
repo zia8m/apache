@@ -42,7 +42,13 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class apache {
-
-
+class apache (
+  String $ensure = $::apache::params::ensure,
+  String $package_name = $::apache::params::package_name,
+  String $service_ensure = $::apache::params::service_ensure,
+  String $service_name = $::apache::params::service_name,
+) inherits ::apache::params{
+  class { '::apache::install':}
+  ~> class {'::apache::service':}
+  
 }
