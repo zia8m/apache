@@ -49,6 +49,7 @@ class apache (
   String $service_name = $::apache::params::service_name,
 ) inherits ::apache::params{
   class { '::apache::install':}
+  -> class {'::apache::config':}
   ~> class {'::apache::service':}
   
 }
